@@ -53,6 +53,6 @@ class PetAgeValidatorTest {
     void shouldReturnTrueWhenBirthDateIsNull() {
         boolean result = validator.isValid(null, null);
 
-        assertFalse(result);
+        assertTrue(result);
     }
 }
