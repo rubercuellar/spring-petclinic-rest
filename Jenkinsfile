@@ -4,6 +4,9 @@ pipeline {
     tools {
         maven 'maven3.9.16'
     }
+    triggers {
+        githubPush()
+    }
 
     stages {
         // stage('Checkout SCM') {
@@ -12,9 +15,9 @@ pipeline {
         //     }
         // }
         
-       stage('Build') {
+       stage('Compile') {
         steps {
-             bat 'mvn clean package -DskipTests -B -ntp'
+             bat 'mvn clean compile -B -ntp'
         }
     }
 
@@ -27,6 +30,12 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
+    }
+       stage('Package') {
+        steps {
+             bat 'mvn package -B -ntp'
+        }
+       
     }
 
        
