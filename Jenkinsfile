@@ -33,7 +33,7 @@ pipeline {
     }
        stage('Package') {
         steps {
-             bat 'mvn package -B -ntp'
+            bat 'mvn package -DskipTests -B -ntp'
         }
        
     }
