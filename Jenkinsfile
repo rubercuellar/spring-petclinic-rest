@@ -6,11 +6,11 @@ pipeline {
     }
 
     stages {
-        stage('Checkout SCM') {
-            steps {
-                git branch: 'master', url: 'https://github.com/rubercuellar/spring-petclinic-rest.git'
-            }
-        }
+        // stage('Checkout SCM') {
+        //     steps {
+        //         git branch: 'master', url: 'https://github.com/rubercuellar/spring-petclinic-rest.git'
+        //     }
+        // }
         
        stage('Build') {
         steps {
