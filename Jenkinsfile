@@ -1,9 +1,15 @@
 pipeline {
-    agent any
-    
-    tools {
-        maven 'maven3.9.16'
+    // agent any
+    // tools {
+    //     maven 'maven3.9.16'
+    // }
+
+    agent {
+        docker {
+            image 'maven:3.9.16-eclipse-temurin-21'
+        }
     }
+
     triggers {
         githubPush()
     }
