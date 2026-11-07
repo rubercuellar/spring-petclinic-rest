@@ -1,0 +1,29 @@
+pipeline {
+    // agent any
+    // tools {
+    //     maven 'maven3.9.16'
+    // }
+    agent {
+        docker {
+            image 'maven:3.9.16-eclipse-temurin-21'
+        }
+    }
+    environment {
+        MAVEN_OPTS = "-Dmaven.repo.local=${WORKSPACE}/.m2/repository"
+        SONAR_USER_HOME = "${WORKSPACE}/.sonar"
+    }
+
+    stages {
+        stage('Artifactory') {
+            steps {
+                sh 'mvn --version'
+            }
+        }
+    }
+    post {
+     
+        cleanup {
+            cleanWs()
+        }
+    }
+}
